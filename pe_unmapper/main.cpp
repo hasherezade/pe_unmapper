@@ -49,7 +49,10 @@ std::tstring mode_to_string(const t_map_modes mode)
 t_map_modes parse_mode(LPCTSTR arg)
 {
     if (!arg) return MODE_VIRTUAL_TO_RAW;
-    char mode_val = _toupper(arg[0]);
+    char mode_val = arg[0];
+    if (mode_val >= 'a' && mode_val <= 'z') {
+        mode_val = (char)_toupper(mode_val);
+    }
     return t_map_modes(mode_val);
 }
 
