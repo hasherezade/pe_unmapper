@@ -1,16 +1,27 @@
-# libPeConv project template
-[![Build status](https://ci.appveyor.com/api/projects/status/ehmf01f38h5ce8ri?svg=true)](https://ci.appveyor.com/project/hasherezade/libpeconv-tpl)
-[![Last Commit](https://img.shields.io/github/last-commit/hasherezade/libpeconv_tpl/master)](https://github.com/hasherezade/libpeconv_tpl/commits)
+# pe_unmapper
 
-A ready-made template for a project based on [libpeconv](https://github.com/hasherezade/libpeconv).
+Small tool to convert beteween the PE alignments (raw and virtual).
 
-Clone & build
--
+Allows for easy PE unmapping: useful in recovering executables dumped from the memory.
 
-1. Use [Git](https://git-scm.com/download/) to make a **recursive** clone of this repo, containing all the required submodules:
+Usage:
 
-```console
-git clone --recursive https://github.com/hasherezade/libpeconv_tpl.git
 ```
+Args:
 
-2. With the help of [CMake](https://cmake.org/), generate a Visual Studio project, analogously to described [here](https://github.com/hasherezade/libpeconv/wiki/Building-the-library).
+Required: 
+/in	: Input file name
+
+Optional: 
+/base	: Base address where the image was loaded: in hex
+/out	: Output file name
+/mode	: Choose the conversion mode:
+	 U: UNMAP (Virtual to Raw) [DEFAULT]
+	 M: MAP (Raw to Virtual)
+	 R: REALIGN (Virtual to Raw, where: Raw == Virtual)
+```
+Example:
+
+```
+pe_unmapper.exe /in _02660000.mem /base 02660000 /out payload.dll
+```
