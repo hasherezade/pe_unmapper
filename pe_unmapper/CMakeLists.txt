@@ -1,10 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 
 # replace "project_template" by your own project name:
-project ( project_template )
-
-# This option allows you to choose if you want to build a DLL or EXE:
-option(BUILD_AS_DLL "Build the project as a DLL" OFF)
+project ( pe_unmapper )
 
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
 
@@ -24,26 +21,7 @@ set (rsrc
 #put your resources here
 )
 
-
-# DLL-specific headers - they will be included only in the DLL build:
-set (dll_hdrs
-#put your headers here
-)
-
-# Choose to build the DLL or EXE
-
-if(BUILD_AS_DLL)
-	include_directories (
-		include
-	)
-	set (dll_hdrs
-		${hdrs}
-		include/api.h
-	)
-	add_library ( ${PROJECT_NAME} SHARED ${dll_hdrs} ${srcs} ${rsrc} dll_main.cpp main.def)
-else()
-	add_executable ( ${PROJECT_NAME} ${hdrs} ${srcs} ${rsrc} main.cpp )
-endif()
+add_executable ( ${PROJECT_NAME} ${hdrs} ${srcs} ${rsrc} main.cpp )
 
 # link with libpeconv.lib
 target_link_libraries ( ${PROJECT_NAME} ${PECONV_LIB} )

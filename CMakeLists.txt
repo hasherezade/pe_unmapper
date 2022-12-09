@@ -1,7 +1,6 @@
 cmake_minimum_required ( VERSION 3.0 )
 
-# replace "peconv_project" by your own project name:
-project ( peconv_project )
+project ( pe_unmapper )
 
 # libs
 # modules:
@@ -21,5 +20,5 @@ set ( PECONV_LIB $<TARGET_FILE:libpeconv> CACHE PATH "PEConvLib library path" )
 
 # Add sub-directories
 #
-add_subdirectory ( project_template )
+add_subdirectory ( pe_unmapper )
 
