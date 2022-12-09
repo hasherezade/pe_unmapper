@@ -138,8 +138,8 @@ void print_help()
     std::tcout << PARAM_BASE;
     std::tcout << TEXT("\t: Base address where the image was loaded: in hex\n");
 
-    std::cout << PARAM_OUT_FILE;
-    std::cout << TEXT("\t: Output file name\n");
+    std::tcout << PARAM_OUT_FILE;
+    std::tcout << TEXT("\t: Output file name\n");
 
     std::tcout << PARAM_MODE;
     std::tcout << TEXT("\t: Choose the conversion mode:\n");
