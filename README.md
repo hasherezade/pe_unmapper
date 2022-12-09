@@ -1,5 +1,7 @@
 # pe_unmapper
 
+[![Build status](https://ci.appveyor.com/api/projects/status/mr5g6h6ld8tc6c5q?svg=true)](https://ci.appveyor.com/project/hasherezade/pe-unmapper)
+
 Small tool to convert beteween the PE alignments (raw and virtual).
 
 Allows for easy PE unmapping: useful in recovering executables dumped from the memory.
