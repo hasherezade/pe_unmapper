@@ -32,12 +32,19 @@ before_build:
       cmake .. -A x64 )
   - if [%env_arch%]==[x86] (
       cmake .. -A Win32 )
-  - cmake -DCMAKE_INSTALL_PREFIX:PATH=%APPVEYOR_BUILD_FOLDER%/%APPVEYOR_REPO_COMMIT% ..
+  - cmake -DUNMAPPER_BUILD_TESTING=ON -DCMAKE_INSTALL_PREFIX:PATH=%APPVEYOR_BUILD_FOLDER%/%APPVEYOR_REPO_COMMIT% ..
 
 build_script:
   - cmake --build . --config %CONFIGURATION% --target install
+  
+after_build:
   - mkdir %artifactName%
   - cp -r %APPVEYOR_BUILD_FOLDER%/%APPVEYOR_REPO_COMMIT%/* %artifactName%
+  - if [%CONFIGURATION%]==[Debug] (
+    cp -r %CONFIGURATION%/* %artifactName% )
+
+test_script:
+  - ctest -V
 
 artifacts:
   - path: build\%artifactName%
